@@ -1,46 +1,46 @@
 clc
-% ÕâÊÇÊäÈë´Å³¡½Ç¦Á£¬Êä³ö´Å¼âÆ«×ª½Ç¦ÈµÄ¾²Ì¬×ªÏòÄ£ĞÍ¡£
+% è¿™æ˜¯è¾“å…¥ç£åœºè§’Î±ï¼Œè¾“å‡ºç£å°–åè½¬è§’Î¸çš„é™æ€è½¬å‘æ¨¡å‹ã€‚
 
-% 1.ÊäÈë²ÎÊı
-B0=(1:1:70)'/1000;                                %Íâ¼Ó´Å³¡ÔÚÕæ¿ÕÖĞ²âµÃµÄ¸ĞÓ¦Ç¿¶È,TÎªµ¥Î»
+% 1.è¾“å…¥å‚æ•°
+B0=(1:1:70)'/1000;                                %å¤–åŠ ç£åœºåœ¨çœŸç©ºä¸­æµ‹å¾—çš„æ„Ÿåº”å¼ºåº¦,Tä¸ºå•ä½
 % B0=70/1000;                                         %mT
-H=B0*1000/0.4/pi;                                   %Íâ¼Ó´Å³¡µÄÕæÊµ´Å³¡Ç¿¶È£¬kA/mÎªµ¥Î».
-alpha=30;                                           %´Å³¡ÇãĞ±½Ç¶È
+H=B0*1000/0.4/pi;                                   %å¤–åŠ ç£åœºçš„çœŸå®ç£åœºå¼ºåº¦ï¼ŒkA/mä¸ºå•ä½.
+alpha=30;                                           %ç£åœºå€¾æ–œè§’åº¦
 
-% 2.µ¼¹Ü²ÎÊı£¬¼ÆËãQ
-D1=4*10^(-3);                                       %Íâ¹ÜÍâ¾¶
-D2=3.8*10^(-3);                                     %Íâ¹ÜÄÚ¾¶
-D3=1.5*10^(-3);                                     %ÄÚ¹ÜÍâ¾¶
-D4=1*10^(-3);                                       %ÄÚ¹ÜÄÚ¾¶
-L=50*10^(-3);                                       %µ¼¹Ü³¤¶È
-A=pi/4*(D2^2-D3^2);                                 %¿ÕÇ»µ×Ãæ»ı
-I1=pi/64*(D1^4-D2^4);                               %Íâ¹Ü½ØÃæ¹ßĞÔ¾ØIz=¡Òx^2*dA.
-I2=pi/64*(D3^4-D4^4);                               %ÄÚ¹Ü½ØÃæ¹ßĞÔ¾ØIz=¡Òx^2*dA.
-G=0.046*10^6;                                       %»ùÖÊ¼ôÇĞÄ£Á¿
-niu=0.5;                                            %»ùÖÊ²´ËÉ±È
-V=A*L;                                              %µ¼¹ÜµÄÈİ»ı
-Q=3*pi*(1+niu)*G*(D1^4-D2^4+D3^4-D4^4)/(32*L);      %×Ô¶¨Òåµ¯ĞÔÏµÊı
-% Q=1;                                              %×Ô¶¨Òåµ¯ĞÔÏµÊı
+% 2.å¯¼ç®¡å‚æ•°ï¼Œè®¡ç®—Q
+D1=4*10^(-3);                                       %å¤–ç®¡å¤–å¾„
+D2=3.8*10^(-3);                                     %å¤–ç®¡å†…å¾„
+D3=1.5*10^(-3);                                     %å†…ç®¡å¤–å¾„
+D4=1*10^(-3);                                       %å†…ç®¡å†…å¾„
+L=50*10^(-3);                                       %å¯¼ç®¡é•¿åº¦
+A=pi/4*(D2^2-D3^2);                                 %ç©ºè…”åº•é¢ç§¯
+I1=pi/64*(D1^4-D2^4);                               %å¤–ç®¡æˆªé¢æƒ¯æ€§çŸ©Iz=âˆ«x^2*dA.
+I2=pi/64*(D3^4-D4^4);                               %å†…ç®¡æˆªé¢æƒ¯æ€§çŸ©Iz=âˆ«x^2*dA.
+G=0.046*10^6;                                       %åŸºè´¨å‰ªåˆ‡æ¨¡é‡
+niu=0.5;                                            %åŸºè´¨æ³Šæ¾æ¯”
+V=A*L;                                              %å¯¼ç®¡çš„å®¹ç§¯
+Q=3*pi*(1+niu)*G*(D1^4-D2^4+D3^4-D4^4)/(32*L);      %è‡ªå®šä¹‰å¼¹æ€§ç³»æ•°
+% Q=1;                                              %è‡ªå®šä¹‰å¼¹æ€§ç³»æ•°
 
-% 3.´Å·Û²ÎÊı£¬¼ÆËãP
-r=125*10^(-6);                                      %Ìú·Û°ë¾¶,×îÖÕ±í´ïÊ½Óë¿ÅÁ£°ë¾¶ÎŞ¹Ø£¬Òò´ËÕâ¸ör¶à´ó²»ÖØÒª
-D=2*r;                                              %Á½¿ÅÁ£³õÊ¼¾àÀë
-fai=0.523;                                            %Ìú·ÛµÄÌå»ı·ÖÊı
-kai0=7.1;                                           %Ìú·Û³õÊ¼´Å»¯ÂÊ
-miu0=4*pi*10^(-7);                                  %Õæ¿Õ´Åµ¼ÂÊ
-Ms=2.156/miu0;                                      %Ìú·ÛµÄ±¥ºÍ´Å»¯Ç¿¶È
-M=kai0*Ms.*H*1000./(kai0.*H*1000+Ms);                 %Frohlich¨CKennelly law
-m=M*4/3*pi*r.^3;                                    %µ¥¸ö¿ÅÁ£µÄ´ÅÅ¼¼«¾Ø
-miu=0.05;                                           %´Ë´¦µÄ¦Ì£¬Ö¸¿ÅÁ£¼äµÄÄ¦²ÁÏµÊı
-Np=fai*V./(4/3*pi*r.^3);                            %µ¼¹ÜÄÚ¿ÅÁ£ÊıÄ¿
-NL=L./(2*r);                                        %µ¼¹ÜÄÚ¿ÅÁ£²ãÊı
-Nc=Np./NL;                                          %µ¼¹ÜÄÚµ¥Á´¸ùÊı
-P=miu0*fai*pi*(D2^2-D3^2)/96*(kai0*Ms.*B0./(miu0*Ms+kai0.*B0)).^2;              %×Ô¶¨Òå´ÅĞÔÏµÊı
-% P=100;                                              %×Ô¶¨Òå´ÅĞÔÏµÊı
-Q_P_ratio=Q./P;                                      %QP±È
+% 3.ç£ç²‰å‚æ•°ï¼Œè®¡ç®—P
+r=125*10^(-6);                                      %é“ç²‰åŠå¾„,æœ€ç»ˆè¡¨è¾¾å¼ä¸é¢—ç²’åŠå¾„æ— å…³ï¼Œå› æ­¤è¿™ä¸ªrå¤šå¤§ä¸é‡è¦
+D=2*r;                                              %ä¸¤é¢—ç²’åˆå§‹è·ç¦»
+fai=0.523;                                            %é“ç²‰çš„ä½“ç§¯åˆ†æ•°
+kai0=7.1;                                           %é“ç²‰åˆå§‹ç£åŒ–ç‡
+miu0=4*pi*10^(-7);                                  %çœŸç©ºç£å¯¼ç‡
+Ms=2.156/miu0;                                      %é“ç²‰çš„é¥±å’Œç£åŒ–å¼ºåº¦
+M=kai0*Ms.*H*1000./(kai0.*H*1000+Ms);                 %Frohlichâ€“Kennelly law
+m=M*4/3*pi*r.^3;                                    %å•ä¸ªé¢—ç²’çš„ç£å¶æçŸ©
+miu=0.05;                                           %æ­¤å¤„çš„Î¼ï¼ŒæŒ‡é¢—ç²’é—´çš„æ‘©æ“¦ç³»æ•°
+Np=fai*V./(4/3*pi*r.^3);                            %å¯¼ç®¡å†…é¢—ç²’æ•°ç›®
+NL=L./(2*r);                                        %å¯¼ç®¡å†…é¢—ç²’å±‚æ•°
+Nc=Np./NL;                                          %å¯¼ç®¡å†…å•é“¾æ ¹æ•°
+P=miu0*fai*pi*(D2^2-D3^2)/96*(kai0*Ms.*B0./(miu0*Ms+kai0.*B0)).^2;              %è‡ªå®šä¹‰ç£æ€§ç³»æ•°
+% P=100;                                              %è‡ªå®šä¹‰ç£æ€§ç³»æ•°
+Q_P_ratio=Q./P;                                      %QPæ¯”
 
 
-% 4.GPT5ÊıÖµÇó½â¦È£¬Êä³ö½á¹û£»
+% 4.æ•°å€¼æ±‚è§£Î¸ï¼Œè¾“å‡ºç»“æœï¼›
 
 % % ------- direct solve: fsolve (angles in degrees) -------
 % alph = deg2rad(alpha); % radians
@@ -67,9 +67,9 @@ Q_P_ratio=Q./P;                                      %QP±È
 % fprintf('theta = %.10f degrees\n', theta);
 % % -------------------------------------------------------
 
-%ÏòÁ¿°æ
+%å‘é‡ç‰ˆ
 % ====== Solve P(i)sin(2(alpha(i)-theta(i))) = Q(i)*sin(theta(i)) for vectors ======
-% alpha, P, Q: scalar or vectors; angles in degrees; theta returned in degrees (n¡Á1)
+% alpha, P, Q: scalar or vectors; angles in degrees; theta returned in degrees (nÃ—1)
 
 % 1) Normalize shapes to column
 makecol = @(x) reshape(x, [], 1); % forces column
@@ -143,19 +143,19 @@ end
 theta(i) = rad2deg(th_i);
 end
 
-% ================== ĞÂÔö£ºÔÚ B0 »ò alpha ·½ÏòµÄ¶Ô±È»æÍ¼£¨ÈİÈÌ³£ÊıÏòÁ¿£¬¼æÈİ MATLAB Óï·¨£© ==================
-% ÒÀÀµ£ºalpha, B0, P, Q, theta ÒÑ´æÔÚ£»theta ÎªÊıÖµ½â£¨¶È£©
+% ================== æ–°å¢ï¼šåœ¨ B0 æˆ– alpha æ–¹å‘çš„å¯¹æ¯”ç»˜å›¾ï¼ˆå®¹å¿å¸¸æ•°å‘é‡ï¼Œå…¼å®¹ MATLAB è¯­æ³•ï¼‰ ==================
+% ä¾èµ–ï¼šalpha, B0, P, Q, theta å·²å­˜åœ¨ï¼›theta ä¸ºæ•°å€¼è§£ï¼ˆåº¦ï¼‰
 toCol = @(x) reshape(x, [], 1);
-isConstVec = @(x) numel(x)>1 && all(x(:)==x(1)); % ËùÓĞÔªËØÍêÈ«ÏàµÈÔòÊÓ×÷³£Á¿
+isConstVec = @(x) numel(x)>1 && all(x(:)==x(1)); % æ‰€æœ‰å…ƒç´ å®Œå…¨ç›¸ç­‰åˆ™è§†ä½œå¸¸é‡
 
-% Ò»¸ö°²È«µÄ³¤¶È¶ÔÆëº¯Êı£¨Ìæ´úÈıÄ¿ÔËËã£©
+% ä¸€ä¸ªå®‰å…¨çš„é•¿åº¦å¯¹é½å‡½æ•°ï¼ˆæ›¿ä»£ä¸‰ç›®è¿ç®—ï¼‰
 function y = toLen_safe(x, n)
 if isscalar(x)
 y = repmat(x, n, 1);
 else
 y = reshape(x, [], 1);
 if numel(y) ~= n
-% Èç¹û³¤¶È²»Æ¥ÅäÇÒ x ÊÇ³£ÊıÏòÁ¿£¬ÔÊĞíÑ¹ËõÎª±êÁ¿ÔÙÀ©Õ¹
+% å¦‚æœé•¿åº¦ä¸åŒ¹é…ä¸” x æ˜¯å¸¸æ•°å‘é‡ï¼Œå…è®¸å‹ç¼©ä¸ºæ ‡é‡å†æ‰©å±•
 if numel(y) > 1 && all(y == y(1))
 y = repmat(y(1), n, 1);
 else
@@ -165,26 +165,26 @@ end
 end
 end
 
-% ¹æ·¶ĞÎ×´
+% è§„èŒƒå½¢çŠ¶
 a = toCol(alpha);
 b = toCol(B0);
 th_num = toCol(theta);
 
-% ½«"³£ÊıÏòÁ¿"½µ¼¶Îª±êÁ¿ÊÓ½Ç
+% å°†"å¸¸æ•°å‘é‡"é™çº§ä¸ºæ ‡é‡è§†è§’
 alpha_is_const = isConstVec(a);
 B0_is_const = isConstVec(b);
 
 if alpha_is_const, a = a(1); end
 if B0_is_const, b = b(1); end
 
-isA_vec = numel(a) > 1; % ÕæÕıµÄÉ¨ÃèÎ¬¶È
+isA_vec = numel(a) > 1; % çœŸæ­£çš„æ‰«æç»´åº¦
 isB_vec = numel(b) > 1;
 
 if ~(xor(isA_vec, isB_vec))
 if ~isA_vec && ~isB_vec
-fprintf('alpha Óë B0 ¾ùÎª³£Á¿£¬Ìø¹ıÇúÏß»æÖÆ¡£theta = %.6g deg\n', th_num);
+fprintf('alpha ä¸ B0 å‡ä¸ºå¸¸é‡ï¼Œè·³è¿‡æ›²çº¿ç»˜åˆ¶ã€‚theta = %.6g deg\n', th_num);
 else
-warning('alpha Óë B0 ²»ÄÜÍ¬Ê±Îª·Ç³£Á¿ÏòÁ¿£¬ÇëÈ·±£Ö»É¨ÃèÆäÖĞÒ»¸ö¡£');
+warning('alpha ä¸ B0 ä¸èƒ½åŒæ—¶ä¸ºéå¸¸é‡å‘é‡ï¼Œè¯·ç¡®ä¿åªæ‰«æå…¶ä¸­ä¸€ä¸ªã€‚');
 end
 return
 end
@@ -192,11 +192,11 @@ end
 if isA_vec
 x = toCol(a); xlab = '\alpha (deg)';
 n = numel(x);
-% ¹ã²¥ P¡¢Q Óë theta
+% å¹¿æ’­ Pã€Q ä¸ theta
 Pv = toLen_safe(P, n);
 Qv = toLen_safe(Q, n);
 thv = toLen_safe(th_num, n);
-% Ò»½×½üËÆ
+% ä¸€é˜¶è¿‘ä¼¼
 alph_rad = deg2rad(x);
 den = 2 .* Pv + Qv .* cos(alph_rad);
 m = abs(den) < eps; den(m) = den(m) + eps .* sign(den(m) + (den(m)==0));
@@ -207,7 +207,7 @@ n = numel(x);
 Pv = toLen_safe(P, n);
 Qv = toLen_safe(Q, n);
 thv = toLen_safe(th_num, n);
-% alpha ×÷Îª³£Á¿»òÓë B0 ¶ÔÆë
+% alpha ä½œä¸ºå¸¸é‡æˆ–ä¸ B0 å¯¹é½
 if isscalar(alpha) || isConstVec(alpha)
 alph_rad = deg2rad(alpha(1)) * ones(n,1);
 else
@@ -218,7 +218,7 @@ m = abs(den) < eps; den(m) = den(m) + eps .* sign(den(m) + (den(m)==0));
 th1 = rad2deg(alph_rad - (Qv .* sin(alph_rad)) ./ den);
 end
 
-% ÅÅĞòÓë»æÍ¼
+% æ’åºä¸ç»˜å›¾
 [xs, idx] = sort(x);
 th_num_s = thv(idx);
 th1_s = th1(idx);
@@ -233,13 +233,14 @@ nexttile;
 plot(xs, th_num_s, 'b-', 'LineWidth', 1.8); hold on;
 plot(xs, th1_s, 'r--', 'LineWidth', 1.8);
 grid on; xlabel(xlab); ylabel('\theta (deg)');
-title('\theta ÊıÖµ½â vs Ò»½×½üËÆ'); legend('ÊıÖµ½â','Ò»½×½üËÆ','Location','best');
+title('\theta æ•°å€¼è§£ vs ä¸€é˜¶è¿‘ä¼¼'); legend('æ•°å€¼è§£','ä¸€é˜¶è¿‘ä¼¼','Location','best');
 
 nexttile;
-yyaxis left; plot(xs, abs_err, 'k-', 'LineWidth', 1.6); ylabel('¾ø¶ÔÎó²î | \Delta\theta | (deg)');
-yyaxis right; plot(xs, rel_err*100, 'm--', 'LineWidth', 1.6); ylabel('Ïà¶ÔÎó²î (%)');
-grid on; xlabel(xlab); title('Îó²î¶Ô±È');
+yyaxis left; plot(xs, abs_err, 'k-', 'LineWidth', 1.6); ylabel('ç»å¯¹è¯¯å·® | \Delta\theta | (deg)');
+yyaxis right; plot(xs, rel_err*100, 'm--', 'LineWidth', 1.6); ylabel('ç›¸å¯¹è¯¯å·® (%)');
+grid on; xlabel(xlab); title('è¯¯å·®å¯¹æ¯”');
 
-fprintf('Îó²îÍ³¼Æ£ºmax |¦¤¦È| = %.4g deg, median |¦¤¦È| = %.4g deg, max Ïà¶ÔÎó²î = %.3g %%\n', ...
+fprintf('è¯¯å·®ç»Ÿè®¡ï¼šmax |Î”Î¸| = %.4g deg, median |Î”Î¸| = %.4g deg, max ç›¸å¯¹è¯¯å·® = %.3g %%\n', ...
 max(abs_err), median(abs_err), max(rel_err)*100);
+
 % ======================================================================
